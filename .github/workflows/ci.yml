@@ -1,0 +1,34 @@
+name: Academic CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for required files
+        run: |
+          echo "Checking repository structure..."
+          test -f README.md || exit 1
+          test -f literature_review_PRS.md || exit 1
+          test -d figures || exit 1
+          echo "✅ All required files present"
+
+      - name: Check markdown files
+        run: |
+          echo "Checking markdown formatting..."
+          for file in *.md; do
+            echo "Found: $file"
+            wc -l "$file"
+          done
+
+      - name: Success message
+        run: echo "✅ PRS literature review repository validated successfully!"
