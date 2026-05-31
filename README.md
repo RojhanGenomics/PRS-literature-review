@@ -71,7 +71,7 @@ Polygenic Risk Scores (PRS) represent a significant advancement in precision med
 - Potential for discrimination (insurance, employment)
 - Need for regulatory frameworks
 
----
+
 
 ## Future Directions
 
